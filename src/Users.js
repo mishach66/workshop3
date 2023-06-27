@@ -64,11 +64,8 @@ const Users = () => {
 
     const removeRandomUser = () => {
         if (usersList.length) {
-            const random = Math.floor(Math.random() * usersList.length)
-            const removed = usersList.splice(random, 1)
-            console.log(removed)
-            setUsersList(usersList.filter(item => item.id !== removed.id))
-            console.log(usersList.length)
+            const removedArr = usersList.splice(Math.floor(Math.random() * usersList.length), 1)
+            setUsersList(usersList.filter(item => item.id !== removedArr[0].id))
             
         } else {
             console.log('No more users...')
