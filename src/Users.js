@@ -62,35 +62,35 @@ const Users = () => {
         setUsersList(generateUsers())
     }, [])
 
-    // const removeRandomUserWithSplice = () => {
-    //     if (usersList.length) {
-    //         const randomIndex = Math.floor(Math.random() * usersList.length)
-    //         const newArray = [...usersList]
-    //         const removed = newArray.splice(randomIndex, 1)
-    //         console.log(removed)
-    //         setUsersList(newArray)
-
-    //     } else {
-    //         console.log('No more users...')
-    //     }
-    // }
-
-    const removeRandomUserWithFilter = () => {
+    const removeRandomUserWithSplice = () => {
         if (usersList.length) {
             const randomIndex = Math.floor(Math.random() * usersList.length)
             const newArray = [...usersList]
-            setUsersList(newArray.filter((item, index, arr) => 
-                randomIndex !== index ? item : null
-                // { return randomIndex !== index ? item : null }
-            ))
+            const removed = newArray.splice(randomIndex, 1)
+            console.log(removed)
+            setUsersList(newArray)
+
         } else {
             console.log('No more users...')
         }
     }
 
+    // const removeRandomUserWithFilter = () => {
+    //     if (usersList.length) {
+    //         const randomIndex = Math.floor(Math.random() * usersList.length)
+    //         const newArray = [...usersList]
+    //         setUsersList(newArray.filter((item, index, arr) => 
+    //             randomIndex !== index ? item : null
+    //             // { return randomIndex !== index ? item : null }
+    //         ))
+    //     } else {
+    //         console.log('No more users...')
+    //     }
+    // }
+
     useEffect(() => {
         document.title = `დარჩა ${usersList.length} მომხმარებელი`
-    }, [usersList.length])
+    }, [usersList])
 
     return (
         <>
@@ -106,8 +106,8 @@ const Users = () => {
                     </ul>
                     <br />
                     <button style={{marginLeft: 25}} 
-                        // onClick={removeRandomUserWithSplice}
-                        onClick={removeRandomUserWithFilter}
+                        onClick={removeRandomUserWithSplice}
+                        // onClick={removeRandomUserWithFilter}
                         >REMOVE RANDOM USER
                     </button>
                 </div>
